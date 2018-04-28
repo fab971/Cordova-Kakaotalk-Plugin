@@ -13,35 +13,38 @@
         if ([[KOSession sharedSession] isOpen]) {
             // login success
             NSLog(@"login succeeded.");
-            [KOSessionTask meTaskWithCompletionHandler:^(KOUser* result, NSError *error) {
+            
+            [KOSessionTask talkProfileTaskWithCompletionHandler:^(KOTalkProfile* profile, NSError* error) {
                 CDVPluginResult* pluginResult = nil;
-                if (result) {
+                if (profile) {
                     // success
-                    NSLog(@"userId=%@", result.ID);
-                    NSLog(@"nickName=%@", [result propertyForKey:@"nickname"]);
-                    NSLog(@"profileImage=%@", [result propertyForKey:@"profile_image"]);
+                    NSLog(@"id=%@",profile.nickName);
+                    NSLog(@"nickName=%@",profile.nickName);
+                    NSLog(@"profileImage=%@",profile.profileImageURL);
                     
                     NSDictionary *userSession = @{
-                                          @"id": result.ID,
-                                          @"nickname": [result propertyForKey:@"nickname"],
-                                          @"profile_image": [result propertyForKey:@"profile_image"]};
+                                                  @"id": profile.nickName,
+                                                  @"nickname": profile.nickName,
+                                                  @"profile_image": profile.profileImageURL};
                     pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:userSession];
                 } else {
                     // failed
                     NSLog(@"login session failed.");
                     pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:[error localizedDescription]];
                 }
+                
                 [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
             }];
+
         } else {
             // failed
             NSLog(@"login failed.");
             CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:[error localizedDescription]];
             [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
         }
-        
-        
-    } authParams:nil authType:(KOAuthType)KOAuthTypeTalk, nil];
+
+    }];
+
 }
 
 - (void)logout:(CDVInvokedUrlCommand*)command
@@ -61,6 +64,7 @@
 
 - (void)share:(CDVInvokedUrlCommand *)command
 {
+    /*
         NSMutableArray *kakaoArray = [NSMutableArray array];
 
         NSMutableDictionary *options = [[command.arguments lastObject] mutableCopy];
@@ -139,6 +143,8 @@
             CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Invalid arguments"];
             [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
         }
+     
+     */
 }
 
 @end

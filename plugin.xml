@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-   id="cordova-plugin-htj-kakaotalk"
-   name="cordova-plugin-htj-kakaotalk"
+   id="cordova-plugin-fab-kakaotalk"
+   name="cordova-plugin-fab-kakaotalk"
    version="1.0.0">
 
     <name>KakaoTalk</name>
@@ -19,7 +19,7 @@
 	<platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="KakaoTalk">
-                <param name="android-package" value="com.htj.plugin.kakao.KakaoTalk" />
+                <param name="android-package" value="com.fab.plugin.kakao.KakaoTalk" />
             </feature>
             <access origin="https://*.kakao.com" />
             <access origin="https://*.kakao.co.kr" />

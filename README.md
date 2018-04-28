@@ -1,7 +1,9 @@
 Cordova Plugin KakaoTalk
 ========================
 
-This plugin is modified by combining the two other plguins
+This plugin is based on the following plugins
+
+- https://github.com/taejaehan/Cordova-Kakaotalk-Plugin
 
 - https://github.com/lihak/KakaoTalkCordovaPlugin
 
@@ -14,7 +16,7 @@ Make sure you've registered your Kakao app with Kakao and have an KAKAO_APP_KEY
 Cordova Install Note:
 ========================
 
-cordova plugin add https://github.com/taejaehan/cordova-kakaotalk.git --variable KAKAO_APP_KEY=YOUR_KAKAO_APP_KEY
+cordova plugin add https://github.com/fab971/Cordova-Kakaotalk-Plugin.git --variable KAKAO_APP_KEY=YOUR_KAKAO_APP_KEY
 
 [Android]
 * nothing to do ;-)
@@ -47,7 +49,7 @@ How to use the plugin
 
 ### Usage
 
-This plugin adds an object to the window. Right now, you can login, logout and share.
+This plugin adds an object to the window. Right now, you can login and logout.
 
 ##### Login
 
